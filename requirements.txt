@@ -7,4 +7,5 @@ streamlit_pandas_profiling==0.1.3
 visions[type_image_path]>=0.7.5, <0.8.0
 setuptools>=65.5.0
 pydantic-settings
-ydata-profiling>=4.7.0
+ydata-profiling==4.12.2
+numpy==1.26.4

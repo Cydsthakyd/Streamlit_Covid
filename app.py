@@ -1,11 +1,14 @@
 import streamlit as st
 import pandas as pd
-import pandas_profiling
+import ydata_profiling
+import numpy as np
+from ydata_profiling import ProfileReport
 from streamlit_pandas_profiling import st_profile_report
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
+
 
 # Set page title and icon
 st.set_page_config(page_title="Covid Analysis", page_icon="😷")
@@ -72,5 +75,5 @@ with tab3:
 # Data Profiling
     st.markdown("### Automated Data Profiling Report")
     pr = df.profile_report()
-    st_profile_report(pr)
-    
+    profile = ProfileReport(df, title="Profiling Report")
+    st_profile_report(profile)

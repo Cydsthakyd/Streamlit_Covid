@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
-import ydata_profiling
 import numpy as np
+import ydata_profiling
 from ydata_profiling import ProfileReport
 from streamlit_pandas_profiling import st_profile_report
 import matplotlib.pyplot as plt
@@ -75,5 +75,14 @@ with tab3:
 # Data Profiling
     st.markdown("### Automated Data Profiling Report")
     pr = df.profile_report()
-    profile = ProfileReport(df, title="Profiling Report")
-    st_profile_report(profile)
+
+    st.title("Profiling in Streamlit")
+    st.write(df)
+    st_profile_report(pr)
+
+    
+    
+   
+
+    
+    

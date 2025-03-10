@@ -19,7 +19,7 @@ with tab1:
 # Load Data
     @st.cache_data
     def load_data():
-        df = pd.read_csv("cleaned/covid_2.csv")  
+        df = pd.read_csv("covid_2.csv") #cleaned/covid_2.csv 
         return df
 
 # Train Model 

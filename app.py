@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
-
+from sklearn.preprocessing import OneHotEncoder, LabelEncoder
 
 # Set page title and icon
 st.set_page_config(page_title="Covid Analysis", page_icon="😷")
@@ -19,7 +19,7 @@ with tab1:
 # Load Data
     @st.cache_data
     def load_data():
-        df = pd.read_csv("covid_2.csv")  
+        df = pd.read_csv("cleaned/covid_2.csv")  
         return df
 
 # Train Model 
@@ -27,7 +27,8 @@ with tab1:
 def train_model(df):
     feature_columns = ["cases", "deaths", "hospitalized", "mutation_count", "transmission_rate", "mutation_transmission_ratio", "mutation_transmission_interaction", "case_fatality_rate", "variant_prevalence"]
     X = df[feature_columns]
-    y = df["severity_level"]  
+    encoder = LabelEncoder()
+    y = encoder.fit_transform(df["severity_level"])  
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
     model = RandomForestClassifier(n_estimators=100, max_depth=10, random_state=42)
     model.fit(X_train, y_train)
